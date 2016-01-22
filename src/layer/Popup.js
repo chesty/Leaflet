@@ -189,6 +189,10 @@ L.Popup = L.Layer.extend({
 
 		this._tipContainer = L.DomUtil.create('div', prefix + '-tip-container', container);
 		this._tip = L.DomUtil.create('div', prefix + '-tip', this._tipContainer);
+
+		if (this.options.riseOnHover) {
+			L.DomEvent.on(container, 'mouseover', this.bringToFront, this);
+		}
 	},
 
 	_updateContent: function () {
